@@ -12,7 +12,9 @@ _DAY_OFFSETS = {
     "tomorrow": 1,
     "next day": 1,
     "day before yesterday": -2,
+    "the day before yesterday": -2,
     "day after tomorrow": 2,
+    "the day after tomorrow": 2,
 }
 
 _WEEKDAYS = {

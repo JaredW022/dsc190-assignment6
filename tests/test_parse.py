@@ -46,3 +46,19 @@ def test_empty_string_raises_value_error():
 def test_unrecognized_text_raises_value_error():
     with pytest.raises(ValueError):
         parse("testing")
+
+
+@pytest.mark.parametrize(
+    ("expression", "reference", "expected"),
+    [
+        ("the day after tomorrow", date(2025, 12, 31), date(2026, 1, 2)),
+        ("the day before yesterday", date(2026, 1, 1), date(2025, 12, 30)),
+        (
+            "two weeks from the day after tomorrow",
+            date(2025, 12, 1),
+            date(2025, 12, 17),
+        ),
+    ],
+)
+def test_day_phrases_with_the(expression, reference, expected):
+    assert parse(expression, today=reference) == expected
